@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 
-	_ "github.com/mattn/go-sqlite3"
 	_ "github.com/mattn/go-sqlite3" // Import pour activer le driver SQLite
 )
 
