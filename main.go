@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"site-BDD/internal" // Utilise le nom du module défini dans go.mod
+	"challenge48h/internal" // Utilise le nom du module défini dans go.mod
 )
 
 func main() {

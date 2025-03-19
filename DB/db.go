@@ -6,10 +6,11 @@ import (
 	"log"
 
 	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3" // Import pour activer le driver SQLite
 )
 
 func initDB(db *sql.DB) {
-	query := `CREATE TABLE IF NOT EXISTS users (
+	query := `CREATE TABLE IF NOT EXISTS users (l
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		email TEXT UNIQUE NOT NULL,
 		name TEXT NOT NULL
