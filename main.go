@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	log.Println("Serveur démarré sur http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", internal.NewServer()))
+	log.Println("Serveur démarré sur http://localhost:5050")
+	log.Fatal(http.ListenAndServe(":5050", internal.NewServer()))
 }
