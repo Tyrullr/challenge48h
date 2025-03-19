@@ -1,5 +1,3 @@
-module mon_projet
+module site-BDD
 
-go 1.22.7
-
-require github.com/mattn/go-sqlite3 v1.14.24 // indirect
+go 1.23.3
