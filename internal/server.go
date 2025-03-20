@@ -19,6 +19,7 @@ func NewServer() *http.ServeMux {
 	mux.HandleFunc("/connection", ConnectionHandler)
 	mux.HandleFunc("/contact", ContactHandler)
 	mux.HandleFunc("/presentation", PresentationHandler)
+	mux.HandleFunc("/index", IndexHandler)
 
 	return mux
 }

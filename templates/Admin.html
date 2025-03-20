@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - BDD [Nom de l'établissement]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Admin.css">
+</head>
+<body>
+    <header>
+        <!-- Barre de navigation (simplifiée) -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="./presentation">BDD [Nom] - Administration</a>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <h1>Administration du site</h1>
+
+        <section>
+            <h2>Gestion des actualités</h2>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalNouvelleActualite">Ajouter une actualité</button>
+
+            <!-- Liste des actualités (à générer dynamiquement) -->
+            <!-- ... -->
+        </section>
+
+        <section>
+            <h2>Gestion des événements</h2>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalNouvelEvenement">Ajouter un événement</button>
+
+            <!-- Liste des événements (à générer dynamiquement) -->
+            <!-- ... -->
+        </section>
+
+        <!-- Modals pour ajouter des actualités/événements (Bootstrap) -->
+        <!-- Modal pour ajouter une actualité -->
+        <div class="modal fade" id="modalNouvelleActualite" tabindex="-1" role="dialog" aria-labelledby="modalNouvelleActualiteLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalNouvelleActualiteLabel">Ajouter une actualité</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulaire pour ajouter une actualité -->
+                        <!-- ... -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal pour ajouter un événement (similaire à la modal actualité) -->
+        <!-- ... -->
+    </main>
+
+    <footer>
+        <!-- Pied de page (simplifié) -->
+        <p>© 2024 BDD [Nom]. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Logique JavaScript pour la page admin (à compléter)
+        // ...
+    </script>
+</body>
+</html>
