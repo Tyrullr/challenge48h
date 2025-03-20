@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualités - BDD PYC</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/Actualité.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <!-- Barre de navigation (comme sur la page d'accueil) -->
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="./presentation">BDD PYC</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">BDD PYC</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Qui sommes-nous ?</a>
+                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="./index">Qui sommes-nous ?</a>
+                        <a class="nav-link" href="actualites.html">Actualités</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./actualite">Actualités</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./contact">Contact</a>
-                    </li>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -44,19 +43,52 @@
 
         <!-- Liste des actualités -->
         <div class="row" id="event-list">
-            <!-- Exemple d'une actualité (à générer dynamiquement) -->
+
+            <!-- Événement à venir 1 -->
             <div class="col-md-4 event-card" data-event-type="futur">
+                <div class="card">
+                    <img src="image Inox.png" class="card-img-top" alt="Collecte Megot">
+                    <div class="card-body">
+                        <h5 class="card-title">Mise en place du Boursotroc (date à définir)</h5>
+                        <p class="card-text">BoursoTroc, plus communement appeler le Vinted entre étudiant</p>
+                        <p class="card-text"><small class="text-muted">Date à définir</small></p>
+                        <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#boursotrocModal"
+                            data-modal-title="Mise en place du Boursotroc - Plus d'infos"
+                            data-modal-body="Boursotroc est un système d'échange de vêtements et d'accessoires entre étudiants. Venez échanger vos vêtements et accessoires avec d'autres étudiants. Date à Définir.">Plus d'infos</button>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Événement à venir 2 -->
+             <div class="col-md-4 event-card" data-event-type="futur">
+                <div class="card">
+                    <img src="image Inox.png" class="card-img-top" alt="Collecte de dons">
+                    <div class="card-body">
+                        <h5 class="card-title">Collecte de Dons (date à définir)</h5>
+                        <p class="card-text">Venez donner ce qui ne vous sert plus, mais pourrait servir à d'autres.</p>
+                        <p class="card-text"><small class="text-muted">Date à Définir</small></p>
+                       <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#donsModal"
+                            data-modal-title="Collecte de Dons - Plus d'infos"
+                            data-modal-body="Venez donner des vêtements, des livres, des fournitures scolaires et d'autres objets dont vous n'avez plus besoin. Ces dons seront redistribués à des étudiants dans le besoin. Date à Définir.">Plus d'infos</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Événement passé 1 -->
+            <div class="col-md-4 event-card" data-event-type="passe">
                 <div class="card">
                     <img src="image Inox.png" class="card-img-top" alt="Collecte Megot">
                     <div class="card-body">
                         <h5 class="card-title">Collecte Megot</h5>
                         <p class="card-text">Une collecte de megot de cigarettes a été organisé avec le célèbre Youtubeur Inoxtag, un record a été battu ! 1 025 000 mégots ramassé en 1 journée</p>
                         <p class="card-text"><small class="text-muted">15 mai 2024</small></p>
-                        <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#collecteMegotModal">Plus d'infos</button>
+                         <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#megotModal"
+                            data-modal-title="Collecte Megot - Plus d'infos"
+                            data-modal-body="En collaboration avec Inoxtag, nous avons organisé une collecte de mégots de cigarettes pour sensibiliser à la pollution. Rien qu’à Marseille, plus de 450 000 mégots ont été ramassés. Nous avons aussi été accompagné par des associations comme CLEANWALK, CLEAN MY CALANQUES ou WINGS OF THE OCEANS ont aussi participé à cette collecte, aussi appeler Megothon. Un total de 1 025 000 mégots ont été ramassés, un record battu ! Merci à tous les participants pour leur engagement !">Plus d'infos</button>
                     </div>
                 </div>
             </div>
-            <!-- Fin exemple d'une actualité -->
+            
 
             <!-- Autre exemple -->
             <div class="col-md-4 event-card" data-event-type="passe">
@@ -66,32 +98,60 @@
                         <h5 class="card-title">Collecte de bouchon</h5>
                         <p class="card-text">Une collecte est organisé au sein de l'établissement a partir du 20 Avril jusqu'au 25 Avril.</p>
                         <p class="card-text"><small class="text-muted">10 avril 2024</small></p>
-                        <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#collecteBouchonModal">Plus d'infos</button>
+                       <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#bouchonModal"
+                            data-modal-title="Collecte de bouchons - Plus d'infos"
+                            data-modal-body="Participez à notre collecte de bouchons au sein de l'établissement ! Du 20 Avril au 25 Avril, déposez vos bouchons dans les points de collecte. Les bouchons seront ensuite recyclés pour soutenir une association caritative.">Plus d'infos</button>
                     </div>
                 </div>
             </div>
             <!-- Fin autre exemple -->
 
-            <!-- Ajoutez d'autres actualités ici -->
+             <!-- Autre exemple -->
+             <div class="col-md-4 event-card" data-event-type="passe">
+                <div class="card">
+                    <img src="image bouchon.jpeg" class="card-img-top" alt="Collecte de cochon">
+                    <div class="card-body">
+                        <h5 class="card-title">Collecte de cochon</h5>
+                        <p class="card-text">Une collecte est organisé au sein de l'établissement a partir du 20 Avril jusqu'au 25 Avril.</p>
+                        <p class="card-text"><small class="text-muted">10 avril 2024</small></p>
+                       <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#cochonModal"
+                            data-modal-title="Collecte de Cochons - Plus d'infos"
+                            data-modal-body="Nous allons chercher des cochons.">Plus d'infos</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin autre exemple -->
+
+             <!-- Autre exemple -->
+             <div class="col-md-4 event-card" data-event-type="passe">
+                <div class="card">
+                    <img src="image bouchon.jpeg" class="card-img-top" alt="Collecte de mouton">
+                    <div class="card-body">
+                        <h5 class="card-title">Collecte de mouton</h5>
+                        <p class="card-text">Une collecte est organisé au sein de l'établissement a partir du 20 Avril jusqu'au 25 Avril.</p>
+                        <p class="card-text"><small class="text-muted">10 avril 2024</small></p>
+                       <button class="btn btn-primary show-more-btn" data-toggle="modal" data-target="#moutonModal"
+                            data-modal-title="Collecte de Moutons - Plus d'infos"
+                            data-modal-body="Nous allons chercher des moutons.">Plus d'infos</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin autre exemple -->
         </div>
 
         <!-- Modals (Boîtes de dialogue) -->
-        <!-- Modal Collecte Megot -->
-        <div class="modal fade" id="collecteMegotModal" tabindex="-1" role="dialog" aria-labelledby="collecteMegotModalLabel" aria-hidden="true">
+
+        <!-- Modal Boursotroc -->
+        <div class="modal fade" id="boursotrocModal" tabindex="-1" role="dialog" aria-labelledby="boursotrocModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="collecteMegotModalLabel">Collecte Megot - Plus d'infos</h5>
+                        <h5 class="modal-title" id="boursotrocModalLabel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>En collaboration avec Inoxtag, nous avons organisé une collecte de mégots de cigarettes pour sensibiliser à la pollution.</p>
-                        <p>Rien qu’à Marseille, plus de 450 000 mégots ont été ramassés.</p>
-                        <p>Nous avons aussi été accompagné par des associations comme CLEANWALK, CLEAN MY CALANQUES ou WINGS OF THE OCEANS ont aussi participé à cette collecte, aussi appeler "Megothon". </p>
-                        <p>Un total de 1 025 000 mégots ont été ramassés, un record battu !</p>
-                        <p>Merci à tous les participants pour leur engagement !</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -100,20 +160,93 @@
             </div>
         </div>
 
-        <!-- Modal Collecte Bouchon -->
-        <div class="modal fade" id="collecteBouchonModal" tabindex="-1" role="dialog" aria-labelledby="collecteBouchonModalLabel" aria-hidden="true">
+        <!-- Modal Dons -->
+        <div class="modal fade" id="donsModal" tabindex="-1" role="dialog" aria-labelledby="donsModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="collecteBouchonModalLabel">Collecte de bouchons - Plus d'infos</h5>
+                        <h5 class="modal-title" id="donsModalLabel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Participez à notre collecte de bouchons au sein de l'établissement !</p>
-                        <p>Du 20 Avril au 25 Avril, déposez vos bouchons dans les points de collecte.</p>
-                        <p>Les bouchons seront ensuite recyclés pour soutenir une association caritative.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Megot -->
+        <div class="modal fade" id="megotModal" tabindex="-1" role="dialog" aria-labelledby="megotModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="megotModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Bouchon -->
+        <div class="modal fade" id="bouchonModal" tabindex="-1" role="dialog" aria-labelledby="bouchonModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bouchonModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Cochon -->
+        <div class="modal fade" id="cochonModal" tabindex="-1" role="dialog" aria-labelledby="cochonModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cochonModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Mouton -->
+        <div class="modal fade" id="moutonModal" tabindex="-1" role="dialog" aria-labelledby="moutonModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="moutonModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -122,7 +255,6 @@
             </div>
         </div>
     </main>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
@@ -150,6 +282,22 @@
                 button.addEventListener('click', function() {
                     const filter = this.dataset.filter; // Récupère le type de filtre à partir de l'attribut data-filter
                     filterEvents(filter); // Applique le filtre
+                });
+            });
+
+            // Gestion des modals (boîtes de dialogue)
+            document.querySelectorAll('.show-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.dataset.target; // Récupère l'ID du modal à partir de l'attribut data-target
+                    const modalTitle = this.dataset.modalTitle; // Récupère le titre du modal
+                    const modalBody = this.dataset.modalBody; // Récupère le corps du modal
+
+                    // Met à jour le contenu du modal
+                    document.querySelector(modalId + ' .modal-title').textContent = modalTitle;
+                    document.querySelector(modalId + ' .modal-body').textContent = modalBody;
+
+                    // Vous pouvez aussi ajouter des images, des listes, etc.
+                    // document.querySelector(modalId + ' .modal-body').innerHTML = modalBody;
                 });
             });
         });
