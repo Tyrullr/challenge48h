@@ -20,6 +20,10 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "Presentation")
 }
 
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "Index")
+}
+
 func ActualiteHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "Actualité")
 }
@@ -29,7 +33,7 @@ func AdminHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ConnectionHandler(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "Connection")
+	renderTemplate(w, "Connexion")
 }
 
 func ContactHandler(w http.ResponseWriter, r *http.Request) {
