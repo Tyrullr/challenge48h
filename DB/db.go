@@ -1,89 +1,78 @@
 package main
 
 import (
+	"crypto/sha256"
 	"database/sql"
+	"encoding/hex"
 	"fmt"
 	"log"
 
-	_ "github.com/mattn/go-sqlite3" // Import pour activer le driver SQLite
+	_ "github.com/mattn/go-sqlite3"
 )
 
-func initDB(db *sql.DB) {
-	query := `CREATE TABLE IF NOT EXISTS users (l
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		email TEXT UNIQUE NOT NULL,
-		name TEXT NOT NULL
-	);`
-	_, err := db.Exec(query)
-	if err != nil {
-		log.Fatal("Erreur lors de la création de la table:", err)
-	}
-}
-
-func EmailExists(db *sql.DB, email string) bool {
-	var count int
-	err := db.QueryRow("SELECT COUNT(*) FROM users WHERE email = ?", email).Scan(&count)
-	if err != nil {
-		log.Fatal("Erreur lors de la vérification de l'email:", err)
-	}
-	return count > 0
-}
-
-func AddUser(db *sql.DB, email, name string) {
-	if EmailExists(db, email) {
-		fmt.Println("L'utilisateur avec cet email existe déjà :", email)
-		return
-	}
-
-	_, err := db.Exec("INSERT INTO users (email, name) VALUES (?, ?)", email, name)
-	if err != nil {
-		log.Fatal("Erreur lors de l'ajout de l'utilisateur:", err)
-	}
-	fmt.Println("Utilisateur ajouté:", name, "(", email, ")")
-}
-
-func RemoveUser(db *sql.DB, email string) {
-	_, err := db.Exec("DELETE FROM users WHERE email = ?", email)
-	if err != nil {
-		log.Fatal("Erreur lors de la suppression de l'utilisateur:", err)
-	}
-	fmt.Println("Utilisateur supprimé:", email)
-}
-
-func GetUsers(db *sql.DB) {
-	rows, err := db.Query("SELECT id, email, name FROM users")
-	if err != nil {
-		log.Fatal("Erreur lors de la récupération des utilisateurs:", err)
-	}
-	defer rows.Close()
-
-	fmt.Println("\nListe des utilisateurs :")
-	for rows.Next() {
-		var id int
-		var email, name string
-		if err := rows.Scan(&id, &email, &name); err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("ID: %d | Email: %s | Nom: %s\n", id, email, name)
-	}
-}
-
-func main() {
+func initDB() *sql.DB {
 	db, err := sql.Open("sqlite3", "./database.db")
 	if err != nil {
 		log.Fatal("Erreur d'ouverture de la base de données:", err)
 	}
+
+	query := `CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL
+    );`
+	_, err = db.Exec(query)
+	if err != nil {
+		log.Fatal("Erreur lors de la création de la table:", err)
+	}
+
+	return db
+}
+
+func hashPassword(password string) string {
+	hash := sha256.Sum256([]byte(password))
+	return hex.EncodeToString(hash[:])
+}
+
+func RegisterUser(db *sql.DB, username, password string) {
+	hashedPassword := hashPassword(password)
+
+	_, err := db.Exec("INSERT INTO users (username, password) VALUES (?, ?)", username, hashedPassword)
+	if err != nil {
+		log.Fatal("Erreur lors de l'enregistrement de l'utilisateur:", err)
+	}
+
+	fmt.Println("Utilisateur enregistré avec succès!")
+}
+
+func LoginUser(db *sql.DB, username, password string) bool {
+	var storedHashedPassword string
+	err := db.QueryRow("SELECT password FROM users WHERE username = ?", username).Scan(&storedHashedPassword)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			fmt.Println("Utilisateur non trouvé.")
+			return false
+		}
+		log.Fatal("Erreur lors de la récupération de l'utilisateur:", err)
+	}
+
+	if storedHashedPassword != hashPassword(password) {
+		fmt.Println("Mot de passe incorrect.")
+		return false
+	}
+
+	fmt.Println("Connexion réussie!")
+	return true
+}
+
+func main() {
+	db := initDB()
 	defer db.Close()
 
-	initDB(db)
+	// Exemples d'utilisation
+	RegisterUser(db, "Alice", "password123")
+	RegisterUser(db, "Bob", "securePass")
 
-	AddUser(db, "alice@example.com", "Alice")
-	AddUser(db, "bob@example.com", "Bob")
-	AddUser(db, "alice@example.com", "Alice (duplicate)") // Ce test ne doit pas fonctionner
-
-	GetUsers(db)
-
-	RemoveUser(db, "alice@example.com")
-
-	GetUsers(db)
+	LoginUser(db, "Alice", "password123") // Succès
+	LoginUser(db, "Bob", "wrongpass")     // Échec
 }
